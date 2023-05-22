@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * input_buffers chained commands
+ * input_buf - buffers chained commands
  * @info:parameter struct
  * @buf: address of buffer
  * @len: address of len var
@@ -14,10 +14,11 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 	size_t len_p = 0;
 
 	if (!*len) /* if nothing left in the buffer, fill it */
-	{*bfree((void **)info->cmd_buf);*/
-	free(*buf);
-	*buf = NULL;
-	signal(SIGINT, sigintHandler);
+	{
+		/*bfree((void **)info->cmd_buf); */
+		free(*buf);
+		*buf = NULL;
+		signal(SIGINT, sigintHandler);
 #if USE_GETLINE
 		r = getline(buf, &len_p, stdin);
 #else
@@ -26,10 +27,10 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 		if (r > e)
 		{
 			if ((*buf)[r - 1] == '\n')
-			{		
+			{
 				(*buf)[r - 1] = '\0'; /* remove trailing newline */
 				r--;
-			}	
+			}
 		info->linecount_flag = 1;
 		remove_comments(*buf);
 		build_history_list(info, *buf, info->histcount++);
@@ -68,7 +69,7 @@ ssize_t get_input(info_t *info)
 
 		check_chain(info, buf, &j, i, len);
 		while (j < len) /* iterate to semicolon or end */
-		{	
+		{
 			if (is_chain(info, buf, &j))
 				break;
 			j++;
@@ -80,7 +81,7 @@ ssize_t get_input(info_t *info)
 			i = len = 0; /* reset position and length */
 			info->cmd_buf_type = CMD_NORM;
 		}
-		
+
 		*buf_p = buf; /* pass back pointer to current command position */
 		return (_strlen(p)); /* return length of current command */
 	}
@@ -98,8 +99,10 @@ ssize_t get_input(info_t *info)
 ssize_t read_buf(info_t *info, char *buf, size_t *i)
 {
 	ssize_t r = 0;
+
 	if (*i)
-		return (0);
+
+	return (0);
 	r = read(info->readfd, buf, READ_buf_size);
 	if (r >= 0)
 		*i = r;
@@ -109,8 +112,8 @@ ssize_t read_buf(info_t *info, char *buf, size_t *i)
 /**
  * _getline - gets the next line of input from STDIN
  * @info: parameter struct
- * ptr: address of pointer to buffer, preallocated or NULL
- * @length: size of preallocated ptr buffer if not NULL 
+ * @ptr: address of pointer to buffer, preallocated or NULL
+ * @length: size of preallocated ptr buffer if not NULL
  *
  * Return: S
  */
@@ -120,7 +123,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 	static size_t i, len;
 	size_t k;
 	ssize_t r = 0, s = 0;
-	char *p = NULL, *new_p = NULL, * c;
+	char *p = NULL, *new_p = NULL, *c;
 
 	p = *ptr;
 	if (p && length)
@@ -161,4 +164,4 @@ void sigintHandler(__attribute__((unused))int sig_num)
 	_puts("\n");
 	_puts("$");
 	_putchar(BUF_FLUSH);
-}	
+}
