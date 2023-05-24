@@ -61,10 +61,8 @@ char *_strncat(char *dest, char *src, int n)
  * @c: the character to look for
  * Return: (s) -pointer to a memory area of s
  */
-char *_strchr(char *s, char)
+char *_strchr(char *s, char c)
 {
-	char c;
-
 	do {
 		if (*s == c)
 			return (s);

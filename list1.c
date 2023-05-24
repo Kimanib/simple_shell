@@ -27,7 +27,7 @@ list_t *add_node(list_t **head, const char *str, int num)
 			return (NULL);
 		}
 	}
-	new_head->next = *head 
+	new_head->next = *head;
 	*head = new_head;
 	return (new_head);
 }
@@ -54,7 +54,7 @@ list_t *add_nose_end(list_t **head, const char *str, int num)
 	new_node->num = num;
 	if (str)
 	{
-		new_node->str = _strduo(str);
+		new_node->str = _strdup(str);
 		if (!new_node->str)
 		{
 			free(new_node);
@@ -84,7 +84,7 @@ size_t print_lisr_str(const list_t *h)
 	while (h)
 	{
 		_puts(h->str ? h->str : "(nil)");
-		_puts("\n"0;
+		_puts("\n");
 		h = h->next;
 		i++;
 	}
@@ -100,7 +100,7 @@ size_t print_lisr_str(const list_t *h)
 
 int delete_node_at_index(list_t **head, unsigned int index)
 {
-	list_t *node, *prev_mode;
+	list_t *node, *prev_node;
 	unsigned int i = 0;
 
 	if (!head || !*head)
@@ -147,7 +147,7 @@ void free_lisr(list_t **head_ptr)
 		next_node = node->next;
 		free(node->str);
 		free(node);
-		node = next_node
+		node = next_node;
 	}
 	*head_ptr = NULL;
 }

@@ -8,7 +8,7 @@
  */
 char **get_environ(info_t *info)
 
-[
+{
 	if (!info->environ || info->env_changed)
 	{
 		info->environ = list_to_strings(info->env);
@@ -85,24 +85,7 @@ int _setenv(info_t * info, char *var, char *value)
 
 	}
 	add_node_end(&(info->env), buf, 0);
-	free(buf) :
+	free(buf);
 	info->env_changed = 1;
 	return (0);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[

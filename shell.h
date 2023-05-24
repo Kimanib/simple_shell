@@ -114,7 +114,7 @@ void fork_cmd(info_t *);
 
 /* toem_parser.c */
 int is_cmd(info_t *, char *);
-char dup_chars(char *, int, int);
+char *dup_chars(char *, int, int);
 char *find_path(info_t *, char *, char *);
 
 /* loophsh.c */
@@ -141,7 +141,7 @@ int _putchar(char);
 /* toem_exits.c */
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
-char _strchr(char *, char);
+char *_strchr(char *, char);
 
 /*toem_tokenizer.c */
 char **strtow(char *, char *);
