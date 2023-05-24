@@ -72,7 +72,7 @@ list_t;
 
 typedef struct passinfo
 {
-	char arg;
+	char *arg;
 	char **argv;
 	char *path;
 	int argc;
@@ -90,11 +90,10 @@ typedef struct passinfo
 	int cmd_buf_type;
 	int readfd;
 	int histcount;
-}
-info_t;
+}info_t;
 
 #define INFO_INIT \
-{ NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0}
+{ NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL\, 0, 0, 0}
 
 /**
  * struct builtin- contains builtine string and related functions
@@ -104,7 +103,7 @@ info_t;
 typedef struct builtin
 {
 	char *type;
-	int (*func)(info_t*);
+	int (*func)(info_t *);
 }builtin_table;
 
 /*toem_shloop.c */
@@ -142,10 +141,11 @@ int _putchar(char);
 /* toem_exits.c */
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
+char _strchr(char *, char);
 
 /*toem_tokenizer.c */
 char **strtow(char *, char *);
-char **strtow2(char *, char *);
+char **strtow2(char *, char);
 
 /*toem_realloc.c */
 char *_memset(char *, char, unsigned int);
@@ -180,7 +180,7 @@ int _myhelp(info_t *);
 /* toem_getline.c */
 ssize_t get_input(info_t *);
 int _getline(info_t *, char **, size_t *);
-int signinthandler(int);
+int signintHandler(int);
 
 /*toem_getinfo.c */
 void clear_info(info_t *);
