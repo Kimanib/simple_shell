@@ -38,8 +38,8 @@ char *_strncpy(char *dest, char  *src, int n)
  */
 char *_strncat(char *dest, char *src, int n)
 {
-	int n, j;
-	char *s;
+	int i, j;
+	char *s = dest;
 
 	i = 0;
 	j = 0;
@@ -61,11 +61,13 @@ char *_strncat(char *dest, char *src, int n)
  * @c: the character to look for
  * Return: (s) -pointer to a memory area of s
  */
-char *_strchr(char *s, char c)
+char *_strchr(char *s, char)
 {
+	char c;
+
 	do {
-	if (*s == c)
-		return (s);
+		if (*s == c)
+			return (s);
 	} while (*s++ != '\0');
 
 	return (NULL);
