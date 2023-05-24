@@ -58,9 +58,9 @@ void free_info(info_t *info, int all)
 		if (!info->cmd_buf)
 			free(info->arg);
 		if (info->env)
-			free_lisr(&(info->env));
+			free_list(&(info->env));
 		if (info->history)
-			free_list(&(info->hisotry));
+			free_list(&(info->history));
 		if (info->alias)
 			free_list(&(info->alias));
 		ffree(info->environ);

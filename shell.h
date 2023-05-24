@@ -18,20 +18,20 @@
 #define BUF_FLUSH -1
 
 /* command chaining*/
-#define CMD_NORM 0
-#define CMD_OR 1
-#define CMD_AND 2
-#define CMD_CHAIN 3
+#define CMD_NORM 	0
+#define CMD_OR 		1
+#define CMD_AND 	2
+#define CMD_CHAIN 	3
 
 /* converts numbers  */
 #define CONVERT_LOWERCASE 1
 #define CONVERT_UNSIGNED 2
 
 /* system getline */
-#define USE_GETLINE 0
-#define USE_STRTOK 0
-#define HIST_FILE ",simple_shell_history"
-#define HIST_MAX 4096
+#define USE_GETLINE 	0
+#define USE_STRTOK	0
+#define HIST_FILE 	",simple_shell_history"
+#define HIST_MAX 	4096
 
 extern char **environ;
 /**
@@ -93,7 +93,7 @@ typedef struct passinfo
 }info_t;
 
 #define INFO_INIT \
-{ NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL\, 0, 0, 0}
+{ NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0}
 
 /**
  * struct builtin- contains builtine string and related functions
@@ -222,8 +222,8 @@ ssize_t get_node_index(list_t *, list_t *);
 /* toem_vars.c */
 int is_chain(info_t *, char *, size_t *);
 void check_chain(info_t *, char *, size_t *, size_t, size_t);
-int replace_alias(info_t);
-int replace_vars(info_t);
+int replace_alias(info_t *);
+int replace_vars(info_t *);
 int replace_string(char **, char *);
 
 #endif
